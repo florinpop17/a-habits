@@ -1,0 +1,38 @@
+---
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+const { user } = Astro.locals;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <script>
+            import 'htmx.org';
+        </script>
+        <style is:global>
+            [x-cloak] {
+                display: none !important;
+            }
+
+            .htmx-indicator {
+                opacity: 0;
+                transition: opacity 200ms ease-in;
+            }
+        </style>
+    </head>
+    <body hx-boost="true" class="bg-gray-800">
+        <main class="bg-gray mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+            <slot />
+        </main>
+    </body>
+</html>

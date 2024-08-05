@@ -1,0 +1,16 @@
+---
+// Full Astro Component Syntax:
+// https://docs.astro.build/basics/astro-components/
+
+interface Props {
+    initialCount?: number;
+}
+
+const { initialCount = 0 } = Astro.props;
+---
+
+<div class="counter flex mt-4 gap-4" x-data={`{ count: ${initialCount} }`}>
+    <button class="bg-white px-4" x-on:click="count--">-</button>
+    <p class="text-xl text-white" x-text="count"></p>
+    <button class="bg-white px-4" x-on:click="count++">+</button>
+</div>
